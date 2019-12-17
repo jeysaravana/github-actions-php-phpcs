@@ -34,7 +34,6 @@ jobs:
         run: composer run-script phpcs
 
 #          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-#          git pull github ${GITHUB_REF} --ff-only
 #          git pull origin ${GITHUB_REF} --ff-only
 #          git push origin HEAD:testbranch
 #          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
@@ -44,6 +43,7 @@ jobs:
           git config user.name "Maykonn"
           git config user.email "maykonn@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          echo ${GITHUB_REF:11}
           git checkout "${GITHUB_REF:11}"
           git commit -am "Automated report"
           git push
