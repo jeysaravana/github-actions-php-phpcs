@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Detect PHP Code Standards Violations
-        run: composer run-script phpcs
-
-      - name: Correct PHP Code Standards Violations
+      - name: Auto Correct PHP Code Standards Violations
         run: composer run-script phpcbf
+
+      - name: Detecting PHP Code Standards Violations
+        run: composer run-script phpcs
