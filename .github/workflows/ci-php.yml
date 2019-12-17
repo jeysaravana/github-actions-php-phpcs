@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2-beta
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -40,7 +40,8 @@ jobs:
           git config user.name "Maykonn"
           git config user.email "maykonn@outlook.com"
           git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
-          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          git push origin HEAD:${GITHUB_REF}
+          git push
+#          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+#          git push origin HEAD:${GITHUB_REF}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
