@@ -14,8 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-        - with:
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Validate composer.json and composer.lock
         run: composer validate
