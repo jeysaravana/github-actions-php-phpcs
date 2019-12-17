@@ -21,31 +21,26 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Auto Correct PHP Code Standards Violations
-        id: phpcbf
-        run: composer run-script phpcbf
-        continue-on-error: true
+      - name: Detecting PHP Code Standards Violations
+        run: composer run-script phpcs
+
+#      - name: Auto Correct PHP Code Standards Violations
+#        id: phpcbf
+#        run: composer run-script phpcbf
+#        continue-on-error: true
         # Exit code 0 is used to indicate that no fixable errors were found, and so nothing was fixed
         # Exit code 1 is used to indicate that all fixable errors were fixed correctly
         # Exit code 2 is used to indicate that PHPCBF failed to fix some of the fixable errors it found
         # Exit code 3 is used for general script execution errors
 
-      - name: Detecting PHP Code Standards Violations
-        run: composer run-script phpcs
-
-#          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-#          git pull origin ${GITHUB_REF} --ff-only
-#          git push origin HEAD:testbranch
-#          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-#          git push origin HEAD:${GITHUB_REF}
-      - name: GIT add-push corrected code
-        run: |
-          git config user.name "Maykonn"
-          git config user.email "maykonn@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git checkout "${GITHUB_REF:11}"
-          git pull
-          git commit -am "Automated report"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: GIT add-push corrected code
+#        run: |
+#          git config user.name "Maykonn"
+#          git config user.email "maykonn@users.noreply.github.com"
+#          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+#          git checkout "${GITHUB_REF:11}"
+#          git pull
+#          git commit -am "Automated report"
+#          git push
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
