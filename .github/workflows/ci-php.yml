@@ -45,5 +45,3 @@ jobs:
 
       - name: GIT push the corrected code
         run: git push github HEAD:${GITHUB_REF}
-        env:
-          GITHUB_REF: ${{ GITHUB_REF }}
