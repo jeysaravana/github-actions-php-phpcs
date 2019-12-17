@@ -34,3 +34,6 @@ jobs:
 
       - name: Detecting PHP Code Standards Violations
         run: composer run-script phpcs
+
+      - name: Committing and pushing corrected code
+        run: git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process" && git push
