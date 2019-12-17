@@ -38,7 +38,7 @@ jobs:
       - name: GIT add-push corrected code
         run: |
           git config user.name "Maykonn"
-          git config user.email "maykonn@outlook.com"
+          git config user.email "maykonn@users.noreply.github.com"
           git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
           git push origin HEAD:${GITHUB_REF}
 #          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
