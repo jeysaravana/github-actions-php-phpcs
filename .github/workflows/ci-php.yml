@@ -28,14 +28,14 @@ jobs:
         run: composer run-script phpcbf
         continue-on-error: true
 
-#      - name: Dump phpcbf step context
-#        env:
-#          STEPS_CONTEXT: ${{ toJson(steps) }}
-#        run: echo "$STEPS_CONTEXT"
-#
-#      - name: Check on failures for phpcbf
-#        if: steps.phpcbf.outputs.status > 1
-#        run: exit 1
+      - name: Dump phpcbf step context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+
+      - name: Check on failures for phpcbf
+        if: steps.phpcbf.outputs.status > 1
+        run: exit 1
 
       - name: Detecting PHP Code Standards Violations
         run: composer run-script phpcs
