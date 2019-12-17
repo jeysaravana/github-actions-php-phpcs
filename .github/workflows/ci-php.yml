@@ -42,12 +42,10 @@ jobs:
 #        run: git config user.name "Maykonn"
 
       - name: GIT add origin
-        run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" && \
-             git pull github ${GITHUB_REF} --ff-only
+        run: git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" && git pull github ${GITHUB_REF} --ff-only
 
       - name: GIT commit the corrected code
-        run: git add . && \
-             git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
+        run: git add . && git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
 
       - name: GIT push the corrected code
         run: git push github HEAD:${GITHUB_REF}
