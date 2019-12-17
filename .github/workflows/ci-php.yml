@@ -43,7 +43,9 @@ jobs:
           git config user.name "Maykonn"
           git config user.email "maykonn@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          echo ${GITHUB_REF:11}
           git checkout "${GITHUB_REF:11}"
+          git pull
           git commit -am "Automated report"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
