@@ -33,13 +33,14 @@ jobs:
       - name: Detecting PHP Code Standards Violations
         run: composer run-script phpcs
 
+#          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
       - name: GIT add-push corrected code
         run: |
-          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
           git pull github ${GITHUB_REF} --ff-only
           git config user.name "Maykonn"
           git config user.email "maykonn@outlook.com"
           git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
-          git push github HEAD:${GITHUB_REF}
+          git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+#          git push github HEAD:${GITHUB_REF}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
