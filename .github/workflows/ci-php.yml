@@ -45,4 +45,4 @@ jobs:
         run: git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
 
       - name: GIT Push the corrected code
-        run: git push
+        run: git push origin HEAD:${GITHUB_REF}
