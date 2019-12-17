@@ -47,5 +47,3 @@ jobs:
           git checkout "${GITHUB_REF:11}"
           git commit -am "Automated report"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
