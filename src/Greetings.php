@@ -4,8 +4,7 @@ namespace Main;
 
 class Greetings
 {
-	public static function sayHelloWorld()
-	{
+	public static function sayHelloWorld() {
 		return 'Hello World';
 	}
 }
