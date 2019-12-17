@@ -14,6 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        - with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -25,8 +27,6 @@ jobs:
         id: phpcbf
         run: composer run-script phpcbf
         continue-on-error: true
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Dump phpcbf step context
         env:
