@@ -25,6 +25,8 @@ jobs:
         id: phpcbf
         run: composer run-script phpcbf
         continue-on-error: true
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Dump phpcbf step context
         env:
