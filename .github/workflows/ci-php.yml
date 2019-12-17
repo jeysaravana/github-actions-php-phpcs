@@ -27,15 +27,10 @@ jobs:
         id: phpcbf
         run: composer run-script phpcbf
         continue-on-error: true
-
-      - name: Dump phpcbf step context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-
-      - name: Check on failures for phpcbf
-        if: steps.phpcbf.outputs.status > 1
-        run: exit 1
+        # Exit code 0 is used to indicate that no fixable errors were found, and so nothing was fixed
+        # Exit code 1 is used to indicate that all fixable errors were fixed correctly
+        # Exit code 2 is used to indicate that PHPCBF failed to fix some of the fixable errors it found
+        # Exit code 3 is used for general script execution errors
 
       - name: Detecting PHP Code Standards Violations
         run: composer run-script phpcs
