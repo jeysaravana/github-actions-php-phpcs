@@ -40,7 +40,7 @@ jobs:
           git config user.name "Maykonn"
           git config user.email "maykonn@users.noreply.github.com"
           git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
-          git pull
+          git pull origin ${GITHUB_REF} --ff-only
           git push origin HEAD:testbranch
 #          git remote set-url --push origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
 #          git push origin HEAD:${GITHUB_REF}
