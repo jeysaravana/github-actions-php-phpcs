@@ -35,5 +35,14 @@ jobs:
       - name: Detecting PHP Code Standards Violations
         run: composer run-script phpcs
 
-      - name: Committing and pushing corrected code
-        run: git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process" && git push
+      - name: Configuring GIT user.email
+        run: git config user.email "ci@dev.com"
+
+      - name: Configuring GIT user.name
+        run: git config user.name "System CI"
+
+      - name: GIT Commit the corrected code
+        run: git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
+
+      - name: GIT Push the corrected code
+        run: git push
