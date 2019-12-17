@@ -43,5 +43,3 @@ jobs:
 
       - name: GIT push the corrected code
         run: git push github HEAD:${GITHUB_REF}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
