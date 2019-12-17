@@ -40,6 +40,10 @@ jobs:
           git config user.name "Maykonn"
           git config user.email "maykonn@outlook.com"
           git commit -am "PHP_CodeSniffer -> code standards were applied on the CI process"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: GIT push the corrected code
         run: git push github HEAD:${GITHUB_REF}
+        env:
+          GITHUB_REF: ${{ GITHUB_REF }}
